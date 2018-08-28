@@ -85,10 +85,6 @@
                     var text = String.fromCharCode.apply(null, new Uint8Array(inflate));
                     var receive = JSON.parse(text);
 
-                    if (receive.parameters) {
-                        
-                    }
-
                     if (receive.signals) {
                         APP.processSignals(receive.signals);
                     }
@@ -133,7 +129,7 @@
             if (new_signals[sig_name].size == 0) continue;
 
             // Read signal
-            voltage = new_signals[sig_name].value[0];
+           voltage = new_signals[sig_name].value[new_signals[sig_name].size - 1];
 
             //Update value
             $('#value').text(parseFloat(voltage).toFixed(2) + "V");
